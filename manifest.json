@@ -1,0 +1,32 @@
+{
+    "BundleType": "Application",
+    "AppIcon": {
+        "36x18": "tutorial.png"
+    },
+		"AcceptedLinkTypes":[
+			"playlist"
+		],
+    "AppName": {
+        "en": "Albums"
+    },
+    "SupportedLanguages": [
+        "en"
+    ],
+		"AppIcon": {
+			"18x18": "icon.png"
+		},
+	  "DefaultTabs": [
+		{
+			"arguments": "library",
+			"title": {
+				"en": "Library"
+			}
+		}, 
+		{
+			"arguments": "playlist",
+			"title": {
+				"en": "Playlist"
+			}
+		}
+	]
+}

@@ -1,0 +1,42 @@
+body{
+  font-family: "Helvetica Neue";
+	padding-top: 40px;
+}
+
+#library, #playlist{
+  float: left;
+	background-color: #ecebe8;
+	position:relative;
+	z-index: 0;
+}
+
+.sp-player{
+  margin-bottom:60px;
+  text-align: center;
+	width: 150px;
+	height: 150px;
+}
+
+.albumName{
+  font-weight: bold;
+  font-size: 12px;
+  display: block;
+  margin-top: 10px;
+}
+
+.albumName:hover{ 
+  text-decoration: none; 
+}
+
+.artistName{
+  display:block;
+  font-size: 12px;
+  color: #666;
+}
+
+/*Popover*/
+.popover{
+width: 100px;
+top: -30px;
+left: -15px;
+}
