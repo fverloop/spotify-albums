@@ -1,12 +1,14 @@
 //Load albums from group array
 function getPlaylist(uri){
 	
-	$('#playlist').empty();
-	
 	var source = m.Playlist.fromURI(uri[0]);
 	var sourceLength = source.tracks.length
 	var albumList = new Array
-
+  
+  //Change toolbar title
+  console.log(source.name);
+  $('#toolbar h1').html(source.name);
+  
 	//Sort albums by artist name
 	var sortedTracks = source.tracks.sort(function(track1, track2) {
 	  var name1 = track1.artists[0].name || "";
@@ -46,10 +48,8 @@ function getPlaylist(uri){
 			  $('#playlist').append(player.node);
 				//player.node.classList.add("sp-image-large");
 				fillScreen('playlist');
-
+        
 			});
 		}	
 	});
 }
-
-getPlaylist();

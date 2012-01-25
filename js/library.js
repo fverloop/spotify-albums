@@ -1,5 +1,6 @@
 //Current album key
 var albumKey = 0;
+var ticker = 0;
 
 //Sort albums by artist name
 var albums = m.library.albums.sort(function(album1, album2) {
@@ -10,13 +11,15 @@ var albums = m.library.albums.sort(function(album1, album2) {
 
 //Load the amount of albums set in the interval variable
 function getLibrary(){
+  
+  $('#switch').html(albums.length+' albums');
     
   //Loop trought every album    
   for(var k=0;k < 50;k++){
       
     var album = albums[albumKey];
     
-    if(album.uri != null){
+    if(album.uri != null  && ticker <= albums.length){
       var albumView = m.Album.fromURI(album.uri, function(albumView) {
         
 				var track;
@@ -51,7 +54,7 @@ function getLibrary(){
       });
     }
   
-  albumKey++; 
+  albumKey++;
            
   }
           

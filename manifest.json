@@ -14,19 +14,5 @@
     ],
 		"AppIcon": {
 			"18x18": "icon.png"
-		},
-	  "DefaultTabs": [
-		{
-			"arguments": "library",
-			"title": {
-				"en": "Library"
-			}
-		}, 
-		{
-			"arguments": "playlist",
-			"title": {
-				"en": "Playlist"
-			}
 		}
-	]
 }
