@@ -46,7 +46,7 @@ function getPlaylist(uri){
 				player.context = thisAlbum;
 	      $(player.node).append('<a href="'+uri+'" class="albumName sp-text-truncate">'+thisAlbum.name+'</a><a href="'+thisAlbum.artist.uri+'" class="artistName sp-text-truncate"><span>'+thisAlbum.artist.name+'</span></a>');
 			  $('#playlist').append(player.node);
-				//player.node.classList.add("sp-image-large");
+				player.node.classList.add("sp-image-large");
 				fillScreen('playlist');
         
 			});

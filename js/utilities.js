@@ -34,7 +34,7 @@ function fillScreen(tab){
   var windowWidth = $(document).width();
   
   //Width of an album cover
-  var albumWidth = 190;
+  var albumWidth = 240;
   
   //Calculate extra margin
   var albumExtraMargin;

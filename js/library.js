@@ -37,7 +37,7 @@ function getLibrary(){
         var player = new v.Player();
 				var artistName = albumView.artist.name;
 				var albumName = albumView.name;
-        //player.node.classList.add("sp-image-large");
+        player.node.classList.add("sp-image-large");
 				player.track = track;
 				albumView.get = function(){
 					
