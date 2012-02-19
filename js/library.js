@@ -11,28 +11,27 @@ var albums = m.library.albums.sort(function(album1, album2) {
 
 //Load the amount of albums set in the interval variable
 function getLibrary(){
-  
-  $('#switch').html(albums.length+' albums');
     
   //Loop trough every album    
   for(var k=0;k < 50;k++){
       
     var album = albums[albumKey];
     
+    
     if(album.uri != null  && ticker <= albums.length){
+            
       var albumView = m.Album.fromURI(album.uri, function(albumView) {
         
-				var track;
+				var track = albumView.get(0);
 				var length = albumView.length;
 				
-				//Select first starred track
+				//Check for starred tracks and play the first one
 				for(var i=0;i <= length;i++){
-					var starred = albumView.data.tracks[i].starred;
-					if(starred){
-						track = albumView.get(i);;
-						break;
-					}
-				}
+          if( albumView.data.tracks[i].starred = 'false'){
+            track = albumView.get(i);
+            break;
+          }
+				}		  
 				   
         var player = new v.Player();
 				var artistName = albumView.artist.name;
@@ -48,8 +47,7 @@ function getLibrary(){
 	      $(player.node).append(
 					'<a href="'+albumView.uri+'" class="albumName sp-text-truncate">'+albumName+'</a><a href="'+albumView.artist.uri+'" class="artistName sp-text-truncate"><span>'+artistName+'</span></a>');
         $('#library').append(player.node);
-        fillScreen('library');
-								
+        fillScreen('library');	
 				
       });
     }
