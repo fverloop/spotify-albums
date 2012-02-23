@@ -1,7 +1,3 @@
-//Current album key
-var albumKey = 0;
-var ticker = 0;
-
 //Sort albums by artist name
 var albums = m.library.albums.sort(function(album1, album2) {
   var name1 = album1.artist.name || "";
@@ -13,30 +9,32 @@ var albums = m.library.albums.sort(function(album1, album2) {
 function getLibrary(){
     
   //Loop trough every album    
-  for(var k=0;k < 50;k++){
+  for(var k=0;k <= albums.length;k++){
       
-    var album = albums[albumKey];
+    var album = albums[k];
     
     
-    if(album.uri != null  && ticker <= albums.length){
+    if(album.uri != null){
             
       var albumView = m.Album.fromURI(album.uri, function(albumView) {
-        
+      
 				var track = albumView.get(0);
-				var length = albumView.length;
+				var length = albumView.length;	  
 				
-				//Check for starred tracks and play the first one
-				for(var i=0;i <= length;i++){
-          if( albumView.data.tracks[i].starred = 'false'){
-            track = albumView.get(i);
-            break;
-          }
-				}		  
+				for(var i=0; i <= length;i++){
+				  
+				  var starred = albumView.tracks[i].starred;
+				  
+				  if(starred){
+				    track = albumView.tracks[i];
+				    break;
+				  }
+				  
+				}
 				   
         var player = new v.Player();
 				var artistName = albumView.artist.name;
 				var albumName = albumView.name;
-        //player.node.classList.add("sp-image-large");
 				player.track = track;
 				albumView.get = function(){
 					
@@ -51,8 +49,6 @@ function getLibrary(){
 				
       });
     }
-  
-  albumKey++;
            
   }
           

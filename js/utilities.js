@@ -9,20 +9,6 @@ var library = m.library;
 var application = m.application;
 var activeView = 'library';
 
-//Lazyloading
-$(window).scroll(function(){
-	
-	//Current active tab
-	var active = m.application.arguments;
-	
-	//Pixels until bottom
-	var scrolled = $(window).height() + $(window).scrollTop();
-	
-  if($('#library').height() <= (scrolled + 600)){
-		getLibrary();
-  }		
-});
-
 //Calculate Margin
 $(window).resize(function(){ 
 	fillScreen(activeView) 
