@@ -3,9 +3,9 @@
     "AppIcon": {
         "36x18": "tutorial.png"
     },
-		"AcceptedLinkTypes":[
-			"playlist"
-		],
+	// "AcceptedLinkTypes":[
+	// 	"playlist"
+	// ],
     "AppName": {
         "en": "Albums"
     },

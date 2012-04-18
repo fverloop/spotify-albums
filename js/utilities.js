@@ -7,15 +7,14 @@ var player = m.player;
 var track = player.track;
 var library = m.library;
 var application = m.application;
-var activeView = 'library';
 
-//Calculate Margin
+//Calculate Margin on resize
 $(window).resize(function(){ 
-	fillScreen(activeView) 
+	fillScreen(); 
 });
 
 //Calculate margin to make the album fill the screen
-function fillScreen(tab){
+function fillScreen(){
   //Total width of window min margin
   var windowWidth = $(document).width();
   
@@ -40,12 +39,12 @@ function fillScreen(tab){
   var rest = (remainingPx - comparison);
   rest = Math.floor(rest);
     
-  $('#'+tab).css('padding-left',rest);
-  $('#'+tab+' .sp-player').css({'margin-left':+albumMargin,'margin-right':+albumMargin});
+  $('#library').css('padding-left',rest);
+  $('#library .sp-player').css({'margin-left':+albumMargin,'margin-right':+albumMargin});
 }
 
 //Catch dropped playlist
-sp.core.addEventListener("linksChanged", handleLinks);
+//sp.core.addEventListener("linksChanged", handleLinks);
 
 function handleLinks() {
 	var links = m.application.links;
@@ -55,5 +54,4 @@ function handleLinks() {
   $('#library').hide();
   $('#playlist').show();
 	getPlaylist(links);
-  activeView = 'playlist';
 }
