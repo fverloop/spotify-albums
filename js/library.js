@@ -14,10 +14,26 @@ function getLibrary(){
 }
 
 function renderAlbumView(source){
+  
+
   var a = m.Album.fromURI(source, function(album) {
     var view = new v.Player();
     view.context = album;
-    view.track = m.Track.fromURI(album.tracks[1].uri);
+
+    //If there's a starred track, select that one as view.track otherwise play the first track.
+    var playTrack = 0;
+
+    // for (var i = 0; i <= album.tracks.length; i++) {
+    //   if(album.tracks[i].starred){
+        
+    //     break;
+    //   }
+    // }
+
+   view.track = m.Track.fromURI(album.tracks[3].uri, function(track){
+      return track;
+    });
+
     $(view.node).append("<a href='"+album.uri+"' class='albumName'>"+album.name+"</a><a href='"+album.artist.uri+"' class='artistName'>"+album.artist.name+"</div>");
     $('#library').append(view.node);
     fillScreen();
