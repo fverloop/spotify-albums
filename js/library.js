@@ -17,25 +17,29 @@ function renderAlbumView(source){
   
 
   var a = m.Album.fromURI(source, function(album) {
-    var view = new v.Player();
-    view.context = album;
+    
+    //Default Track
+    var t = 0;
 
-    //If there's a starred track, select that one as view.track otherwise play the first track.
-    var playTrack = 0;
+    //If there's a starred track. Select that one, otherwise play first track
+    for (var i=0; i <= album.tracks.length; i++) {
+      if(album.tracks[i].starred == true){
+        t = i;
+        break;
+      }
+    }
 
-    // for (var i = 0; i <= album.tracks.length; i++) {
-    //   if(album.tracks[i].starred){
-        
-    //     break;
-    //   }
-    // }
+    //Set track and album context
+    var player = new v.Player();
+    player.track = album.tracks[t];
+    album.get = function() {
+        return album.tracks[t];
+    }
+    player.context = album;
 
-   view.track = m.Track.fromURI(album.tracks[3].uri, function(track){
-      return track;
-    });
-
-    $(view.node).append("<a href='"+album.uri+"' class='albumName'>"+album.name+"</a><a href='"+album.artist.uri+"' class='artistName'>"+album.artist.name+"</div>");
-    $('#library').append(view.node);
+    //Append node to document
+    $(player.node).append("<a href='"+album.uri+"' class='albumName'>"+album.name+"</a><a href='"+album.artist.uri+"' class='artistName'>"+album.artist.name+"</div>");
+    $('#library').append(player.node);
     fillScreen();
   });
 }
