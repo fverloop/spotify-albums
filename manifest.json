@@ -1,11 +1,11 @@
 {
     "BundleType": "Application",
+    "BundleIdentifier": "albums",
+    "BundleVersion": "0.1",
+    "RequiredInterface": 1,
     "AppIcon": {
         "36x18": "tutorial.png"
     },
-	// "AcceptedLinkTypes":[
-	// 	"playlist"
-	// ],
     "AppName": {
         "en": "Albums"
     },
