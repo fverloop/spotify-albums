@@ -21,11 +21,23 @@ function startAlbum(e) {
 }
 
 function getLibrary(){
-  var albums = _.sortBy(m.library.albums, function(album) {
-    return album.data.artist.name.toLowerCase()
-  });
+  var albums = m.library.albums.sort(function(a, b) {
+    var artistName1 = a.data.artist.name;
+    var artistName2 = b.data.artist.name;
 
-  var albums = albums.reverse();
+    if (artistName1 > artistName2)
+      return -1;
+    if (artistName2 > artistName1)
+      return 1;
+
+    var albumYear1 = a.year;
+    var albumYear2 = b.year;
+
+    if (albumYear1 > albumYear2)
+      return -1;
+    if (albumYear2 > albumYear1)
+      return 1;
+  });
 
   //Create a view for every album
   for (var i = albums.length - 1; i >= 0; i--) {
