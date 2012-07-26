@@ -1,4 +1,5 @@
 function startAlbum(e) {
+
   var album = e.data.album;
   var player = e.data.player;
 
@@ -13,14 +14,13 @@ function startAlbum(e) {
     }
   }
 
-  player.track = album.tracks[t];
+  player.play(album.tracks[t], album);
 
-  album.get = function() {
-    return album.tracks[t];
-  }
 }
 
 function getLibrary(){
+  
+  //Sort albums by artist and the by album release year
   var albums = m.library.albums.sort(function(a, b) {
     var artistName1 = a.data.artist.name;
     var artistName2 = b.data.artist.name;
