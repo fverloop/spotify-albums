@@ -1,3 +1,4 @@
+// This will be fired when the play button on an album cover will be clicked.
 function startAlbum(e) {
 
   var album = e.data.album;
@@ -18,9 +19,10 @@ function startAlbum(e) {
 
 }
 
+
 function getLibrary(){
   
-  //Sort albums by artist and the by album release year
+  //Sort albums by artist and then by album release year
   var albums = m.library.albums.sort(function(a, b) {
     var artistName1 = a.data.artist.name;
     var artistName2 = b.data.artist.name;
