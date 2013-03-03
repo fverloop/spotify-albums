@@ -19,31 +19,42 @@ function startAlbum(e) {
 
 }
 
-
-function getLibrary(){
+function getAlbums(){
+  var source = m.library.starredPlaylist;
+  var sourceLength = source.tracks.length
+  var albumList = new Array
   
-  //Sort albums by artist and then by album release year
-  var albums = m.library.albums.sort(function(a, b) {
-    var artistName1 = a.data.artist.name;
-    var artistName2 = b.data.artist.name;
+  //Sort albums by artist name
+  var sortedTracks = source.tracks.sort(function(track1, track2) {
+    var name1 = track1.artists[0].name || "";
+    var name2 = track2.artists[0].name || "";
+    return name1.toLocaleLowerCase().localeCompare(name2.toLocaleLowerCase());
+  });
 
-    if (artistName1 > artistName2)
-      return -1;
-    if (artistName2 > artistName1)
-      return 1;
-
-    var albumYear1 = a.year;
-    var albumYear2 = b.year;
-
-    if (albumYear1 > albumYear2)
-      return -1;
-    if (albumYear2 > albumYear1)
-      return 1;
+  //Make albums from seperate tracks
+  $.each(sortedTracks, function(key) {
+  
+    var albumURI  = sortedTracks[key].album.data.uri;
+    var albumName = sortedTracks[key].album.name;
+    var duplicate = false; 
+  
+    //compare this album with the albums in the group list
+    //if it finds a similar album, 'duplicate' is true and the loop breaks
+    $.each(albumList, function(key, group){
+      if(albumURI == group){
+        duplicate = true;
+      }
+    });
+  
+    if (duplicate == false) {
+      albumList.push(albumURI);
+    };
+      
   });
 
   //Create a view for every album
-  for (var i = albums.length - 1; i >= 0; i--) {
-    var uri = albums[i].uri;
+  for (var i = albumList.length - 1; i >= 0; i--) {
+    var uri = albumList[i];
     if(uri != null){ renderAlbumView(uri); }
   }
 }

@@ -42,16 +42,3 @@ function fillScreen(){
   $('#library').css('padding-left',rest);
   $('#library .sp-player').css({'margin-left':+albumMargin,'margin-right':+albumMargin});
 }
-
-//Catch dropped playlist
-//sp.core.addEventListener("linksChanged", handleLinks);
-
-function handleLinks() {
-	var links = m.application.links;
-  $('#playlist').empty();
-  $('#toolbar').css('opacity','1');
-  ticker = 0;
-  $('#library').hide();
-  $('#playlist').show();
-	getPlaylist(links);
-}
